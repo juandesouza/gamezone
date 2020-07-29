@@ -1,38 +1,11 @@
 import * as React from 'react';
-import { View, Text } from 'react-native';
+import { Image, Text } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import Home from '../screens/Home';
 import About from '../screens/About';
 import ReviewDetails from '../screens/ReviewDetails';
-
-function HomeScreen() {
-  return (
-    <View
-      style={{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
-    >
-      <Text>Home Screen</Text>
-    </View>
-  );
-}
-
-function DetailsScreen() {
-  return (
-    <View
-      style={{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
-    >
-      <Text>Details Screen</Text>
-    </View>
-  );
-}
+import Header from '../shared/Header';
 
 const Stack = createStackNavigator();
 
@@ -41,18 +14,18 @@ function HomeStack() {
     <Stack.Navigator
       initialRouteName='Home'
       screenOptions={{
-        headerStyle: { backgroundColor: '#7159c1' },
-        headerTintColor: '#fff',
+        headerStyle: {
+          backgroundColor: '#eee',
+          height: 60,
+        },
+        headerTintColor: '#444',
+        headerTitle: () => <Text></Text>,
+        headerBackground: props => (
+          <Header {...props} title='GameZone' />
+        ),
       }}
     >
-      <Stack.Screen
-        name='Home'
-        component={Home}
-        options={{
-          title: 'Overview',
-          headerStyle: { backgroundColor: '#aaf' },
-        }}
-      />
+      <Stack.Screen name='Home' component={Home} />
       <Stack.Screen name='About' component={About} />
       <Stack.Screen name='Review Details' component={ReviewDetails} />
     </Stack.Navigator>
