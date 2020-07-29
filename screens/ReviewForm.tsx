@@ -68,6 +68,7 @@ const ReviewForm = (props: Props) => {
             </Text>
             <TextInput
               multiline
+              numberOfLines={3}
               style={globalStyles.input}
               placeholder='Review comment'
               onChangeText={formik.handleChange('body')}
